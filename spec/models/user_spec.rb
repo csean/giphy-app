@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -16,6 +18,5 @@ require 'rails_helper'
 
 describe User do
   context 'validations' do
-
   end
 end

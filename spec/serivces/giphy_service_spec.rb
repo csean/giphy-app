@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe GiphyService::Client do
@@ -45,5 +47,4 @@ describe GiphyService::Client do
       expect(client.by_ids('26njPmXyeB1kCAauk-dfgdfdfdf')).to be_nil
     end
   end
-
 end

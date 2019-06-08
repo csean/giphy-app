@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -31,17 +33,17 @@ gem 'cancancan'
 # better forms
 gem 'simple_form'
 
-gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 gem 'GiphyClient'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
-  gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.8'
   gem 'shoulda-matchers'
 end
 
