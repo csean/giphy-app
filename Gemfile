@@ -34,9 +34,12 @@ gem 'cancancan'
 gem 'simple_form'
 
 gem 'bootstrap', '~> 4.3.1'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 
 gem 'GiphyClient'
+gem 'kaminari'
+gem 'responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,1 @@
+$('#my-gifs').html('<%= j render partial: 'gif', collection: @gifs, locals: { user_gifs: @gifs.pluck(:giphy_id) } %>');

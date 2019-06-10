@@ -19,5 +19,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable
 
+  has_many :favorites, dependent: :destroy
+  has_many :gifs, through: :favorites
+
   validates_presence_of :username, :name
+
 end

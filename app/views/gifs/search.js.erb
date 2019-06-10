@@ -1,0 +1,3 @@
+$('#search-container').html('<%= j render partial: 'gif', collection: @gifs, locals: { user_gifs: @user_gifs } %>');
+
+$('#search-pagination').html('<%= j render partial: 'pagination' %>');

@@ -1,0 +1,14 @@
+<div id="gifs">
+
+  <h1>hello world!</h1>
+
+  <%= render partial: 'search' %>
+
+  <p>
+    My Gifs
+  </p>
+  <div id="my-gifs" class="gif-container">
+    <%= render partial: 'gif', collection: @gifs, locals: { user_gifs: @gifs.map(&:giphy_id) }%>
+  </div>
+
+</div>

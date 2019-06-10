@@ -1,0 +1,7 @@
+<%- id = gif.is_a?(Gif) ? gif.giphy_id : gif.id %>
+<div class='favorite' data-giphy-id='<%= id %>'>
+  <%= giphy_image(id) %>
+  <div class='gif-footer'>
+    <%= favorite_icon(id, user_gifs) %>
+  </div>
+</div>
