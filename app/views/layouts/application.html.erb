@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GiphyApp</title>
+    <title>Giphy App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, install-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body class="center">
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Giphies!!!</a>
+      <%- if user_signed_in? %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><%= link_to 'My Gifs', gifs_path, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to 'Search for Giphies', search_gifs_path, class: 'nav-link' %></li>
+          </ul>
+        </div>
+      <%- end %>
+    </nav>
+
     <div class="container">
       <%- flash.each do |name, msg| %>
-        <%= tag.div msg, clas: 'alert alert-info' %>
+        <%= tag.div msg, class: "alert alert-success" %>
       <%- end %>
       <%= yield %>
     </div>

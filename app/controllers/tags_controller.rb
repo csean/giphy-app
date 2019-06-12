@@ -1,20 +1,9 @@
 class TagsController < ApplicationController
-  respond_to :html, :json, only: [:index, :show]
-  respond_to :js, only: [:create]
-
-  def index
-    @tags = Tag.page(params[:page])
-  end
+  before_action :authenticate_user!
+  respond_to :html, :json
 
   def show
-    @gifs = if params[:tag]
-              Tag.find_by(name: params[:name]).gifs.page(params[:page])
-            else
-              Tag.gifs.page(params[:page])
-            end
-  end
-
-  def create
-    @tag = Tag.find_or_create_by(name: params[:name])
+    @tag = Tag.includes(:gifs).find_by(name: params[:name])
+    @gifs = @tag.gifs.page(params[:page])
   end
 end

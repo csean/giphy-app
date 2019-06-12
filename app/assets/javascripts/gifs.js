@@ -5,7 +5,8 @@ $(document).ready(function() {
     e.preventDefault();
     $.ajax({
       url: '/gifs/search',
-      data: { query: $('#query').val() }
+      data: { query: $('#query').val() },
+      dataType: 'script'
     });
   });
 

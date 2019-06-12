@@ -23,15 +23,22 @@
   color: red;
 }
 
-ul.tags {
+ul.gif-tags {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.tags li {
-  border: 1px solid blue;
+.gif-tags li {
   display: inline-block;
-  font-size: 1em;
+
   padding: 5px;
+}
+
+.gif-container {
+  margin-top: 30px;
+}
+
+#image {
+  margin: 30px 0;
 }

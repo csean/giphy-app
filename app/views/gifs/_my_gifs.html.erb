@@ -1,0 +1,7 @@
+<div id="my-gifs" class="gif-container">
+  <%= render partial: 'gif', collection: @gifs, locals: { user_gifs: @gifs.map(&:giphy_id) } %>
+</div>
+
+<div class="row align-items-center justify-content-center">
+  <div class="pagination-centered"><%= paginate @gifs %></div>
+</div>

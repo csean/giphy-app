@@ -1,11 +1,14 @@
-<div id="gif-container" %>
+<div class="row align-items-center justify-content-center">
+  <div id="image">
+    <%= giphy_fullsize(@gif.giphy_id) %>
+  </div>
+</div>
 
-<%= giphy_fullsize(@gif.giphy_id) %>
 <div class="tags">
 
-<%= simple_form_for @gif do |f| %>
-  <%= f.association :tags, collection: Tag.all, input_html: { class: 'select2', multiple: true } %>
-  <%= f.submit %>
+<%= simple_form_for @gif, class: 'form-inline' do |f| %>
+  <%= f.association :tags, collection: Tag.all, input_html: { class: 'select2', multiple: true }, label: false %>
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
 <%- end %>
 <p>
   <%= link_to 'Back to gifs', gifs_path %>

@@ -1,5 +1,6 @@
 class GifsController < ApplicationController
-  respond_to :html, :json, except: [:search, :favorite]
+  before_action :authenticate_user!
+  respond_to :html, :json, except: [:favorite]
   respond_to :js
 
   def index
@@ -12,14 +13,19 @@ class GifsController < ApplicationController
 
   def update
     @gif = Gif.find_by(giphy_id: params[:giphy_id])
-    @gif.associate_tags(gif_params[:tags])
+    @gif.associate_tags(gif_params[:tag_ids])
     respond_with(@gif)
   end
 
   def search
     # hardcoded 25 per page in interest of time
     offset = params[:page].to_i * 20
-    result = GiphyService::Client.search(params[:query], offset: offset)
+    result = if params[:query].present?
+               GiphyService::Client.search(params[:query], offset: offset)
+             else
+               GiphyService::Client.trending
+             end
+
     @gifs = result.data
     @user_gifs = current_user.gifs.where(giphy_id: @gifs.map(&:id)).pluck(:giphy_id)
     @pagination = result.pagination
@@ -34,6 +40,6 @@ class GifsController < ApplicationController
   private
 
   def gif_params
-    params.require(:gif).permit(tags: [])
+    params.require(:gif).permit(tag_ids: [])
   end
 end

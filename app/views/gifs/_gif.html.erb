@@ -10,9 +10,11 @@
   <div class='gif-footer'>
     <span class='favorite' data-giphy-id='<%= id %>'><%= favorite_icon(id, user_gifs) %></span>
     <%- if gif.is_a?(Gif) && gif.tags.present? %>
-      <ul class='tags'>
+      <ul class='gif-tags'>
         <%- gif.tags.each do |tag| %>
-          <li><%= tag.name %></li>
+          <li>
+            <span class="badge badge-primary bg-light badge-pill"><%= link_to tag.name, tag_path(tag.name) %></span>
+          </li>
         <%- end %>
       </ul>
     <%- end %>

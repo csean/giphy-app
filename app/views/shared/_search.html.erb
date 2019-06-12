@@ -1,0 +1,17 @@
+<form id="search-form" class="form-inline">
+  <div class="form-row">
+    <div class="col-12">
+      <div class="input-group">
+        <input type="text" id="query" name="query" class="form-control lg-12 md-12" placeholder="Search"></input>
+        <button type="submit" class="fa fa-icon fa-search"></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div id="search-container" class="gif-container">
+    <%= render partial: 'gifs/gif', collection: @gifs, locals: { user_gifs: @user_gifs } %>
+</div>
+
+<div id="search-pagination" class="pagination-centered row align-items-center justify-content-center">
+</div>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites, only: [:create]
+  resources :tags, only: [:show], param: :name
 
   get 'home/index'
   devise_for :users

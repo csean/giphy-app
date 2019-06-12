@@ -1,14 +1,7 @@
 <div id="gifs">
-
-  <h1>hello world!</h1>
-
-  <%= render partial: 'search' %>
-
-  <p>
-    My Gifs
-  </p>
-  <div id="my-gifs" class="gif-container">
-    <%= render partial: 'gif', collection: @gifs, locals: { user_gifs: @gifs.map(&:giphy_id) }%>
+  <div class="row">
+    <h3>My Gifs<span class="tag tag-pill tag-default">test</span></h3>
   </div>
 
+  <%= render partial: 'my_gifs' %>
 </div>
