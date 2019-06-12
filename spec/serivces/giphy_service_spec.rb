@@ -28,23 +28,23 @@ describe GiphyService::Client do
     end
   end
 
-  describe 'by_id' do
+  describe 'find_by_id' do
     it 'has an appropriate class' do
-      expect(client.by_id('26njPmXyeB1kCAauk')).to be_a GiphyClient::InlineResponse2001
+      expect(client.find_by_id('26njPmXyeB1kCAauk')).to be_a GiphyClient::InlineResponse2001
     end
 
     it 'returns nil if gif cannot be found' do
-      expect(client.by_id('26njPmXyeB1kCAauk-dfgdfdfdf')).to be_nil
+      expect(client.find_by_id('26njPmXyeB1kCAauk-dfgdfdfdf')).to be_nil
     end
   end
 
-  describe 'by_ids' do
+  describe 'find_by_ids' do
     it 'has an appropriate class' do
-      expect(client.by_ids('26njPmXyeB1kCAauk')).to be_a GiphyClient::InlineResponse200
+      expect(client.find_by_ids('26njPmXyeB1kCAauk')).to be_a GiphyClient::InlineResponse200
     end
 
     it 'returns nil if gif cannot be found' do
-      expect(client.by_ids('26njPmXyeB1kCAauk-dfgdfdfdf')).to be_nil
+      expect(client.find_by_ids('26njPmXyeB1kCAauk-dfgdfdfdf')).to be_nil
     end
   end
 end

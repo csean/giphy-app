@@ -1,6 +1,10 @@
 module GifsHelper
-  def giphy_image(giphy_id)
-    tag.img(src: GiphyService::Client.base_url % { giphy_id: giphy_id } )
+  def giphy_thumbnail(giphy_id)
+    tag.img(src: GiphyService::Client.thumbnail_url % { giphy_id: giphy_id } )
+  end
+
+  def giphy_fullsize(giphy_id)
+    tag.img(src: GiphyService::Client.fullsize_url % { giphy_id: giphy_id } )
   end
 
   def favorite_icon(gif, user_gifs)

@@ -7,7 +7,11 @@ module GiphyService
 
   class Client
     class << self
-      attr_accessor :api_instance, :api_key, :default_options, :base_url
+      attr_accessor :api_instance,
+                    :api_key,
+                    :default_options,
+                    :thumbnail_url,
+                    :fullsize_url
 
       def trending(**options)
         api_instance.gifs_trending_get(api_key, default_options.merge(options))
@@ -33,14 +37,14 @@ module GiphyService
         nil
       end
 
-      def by_id(id)
+      def find_by_id(id)
         api_instance.gifs_gif_id_get(api_key, id)
       rescue GiphyClient::ApiError => e
         Rails.logger.error("Error getting gif - #{id}: #{e.message}")
         nil
       end
 
-      def by_ids(ids)
+      def find_by_ids(ids)
         ids = ids.join(',') if ids.is_a?(Array)
 
         api_instance.gifs_get(api_key, ids)

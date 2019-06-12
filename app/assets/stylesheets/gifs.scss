@@ -22,3 +22,16 @@
 .favorited {
   color: red;
 }
+
+ul.tags {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags li {
+  border: 1px solid blue;
+  display: inline-block;
+  font-size: 1em;
+  padding: 5px;
+}

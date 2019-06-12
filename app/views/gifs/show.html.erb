@@ -1,0 +1,12 @@
+<div id="gif-container" %>
+
+<%= giphy_fullsize(@gif.giphy_id) %>
+<div class="tags">
+
+<%= simple_form_for @gif do |f| %>
+  <%= f.association :tags, collection: Tag.all, input_html: { class: 'select2', multiple: true } %>
+  <%= f.submit %>
+<%- end %>
+<p>
+  <%= link_to 'Back to gifs', gifs_path %>
+</p>

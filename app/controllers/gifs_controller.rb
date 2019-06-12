@@ -6,6 +6,16 @@ class GifsController < ApplicationController
     @gifs = current_user.gifs.page(params[:page])
   end
 
+  def show
+    @gif = Gif.find_by(giphy_id: params[:giphy_id])
+  end
+
+  def update
+    @gif = Gif.find_by(giphy_id: params[:giphy_id])
+    @gif.associate_tags(gif_params[:tags])
+    respond_with(@gif)
+  end
+
   def search
     # hardcoded 25 per page in interest of time
     offset = params[:page].to_i * 20
@@ -19,5 +29,11 @@ class GifsController < ApplicationController
     gif = Gif.find_or_create_by(giphy_id: params[:giphy_id])
     Favorite.toggle_favorite(current_user, gif)
     @gifs = current_user.gifs.page(0)
+  end
+
+  private
+
+  def gif_params
+    params.require(:gif).permit(tags: [])
   end
 end

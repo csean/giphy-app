@@ -1,7 +1,20 @@
 <%- id = gif.is_a?(Gif) ? gif.giphy_id : gif.id %>
-<div class='favorite' data-giphy-id='<%= id %>'>
-  <%= giphy_image(id) %>
+<div>
+  <%- if gif.is_a?(Gif) %>
+    <%= link_to gif_path(gif.giphy_id) do %>
+      <%= giphy_thumbnail(id) %>
+    <%- end %>
+  <%- else %>
+    <%= giphy_thumbnail(id) %>
+  <%- end %>
   <div class='gif-footer'>
-    <%= favorite_icon(id, user_gifs) %>
+    <span class='favorite' data-giphy-id='<%= id %>'><%= favorite_icon(id, user_gifs) %></span>
+    <%- if gif.is_a?(Gif) && gif.tags.present? %>
+      <ul class='tags'>
+        <%- gif.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <%- end %>
+      </ul>
+    <%- end %>
   </div>
 </div>
